@@ -3,7 +3,6 @@ backend:
   repo: nicholasjackson827/ngjackson
 
 media_folder: static/assets
-publish_mode: editorial_workflow
 
 collections:
   - name: blog
