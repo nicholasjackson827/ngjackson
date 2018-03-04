@@ -3,6 +3,7 @@ backend:
   repo: nicholasjackson827/ngjackson
 
 media_folder: static/assets
+publish_mode: editorial_workflow
 
 collections:
   - name: blog
@@ -13,3 +14,5 @@ collections:
       - { name: path, label: Path }
       - { name: date, label: Date, widget: date }
       - { name: title, label: Title }
+      - { name: tags, label: Tags, widget: list }
+      - { name: body, label: Content, widget: markdown }

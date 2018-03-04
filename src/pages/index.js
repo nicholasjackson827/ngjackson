@@ -27,7 +27,7 @@ export default function IndexPage({data}) {
       {data.allMarkdownRemark.edges.map(post => (
         <li><Link
           key={post.node.id} 
-          href={post.node.frontmatter.path}>
+          to={post.node.frontmatter.path}>
           {post.node.frontmatter.title}
         </Link></li>
       ))}
