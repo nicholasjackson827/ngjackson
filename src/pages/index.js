@@ -3,13 +3,17 @@ import Link from 'gatsby-link'
 
 export const indexQuery = graphql`
   query IndexQuery {
-    allMarkdownRemark(limit: 10) {
+    allMarkdownRemark(
+      limit: 10
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { published: { eq: true } } }
+    ) {
       edges {
         node {
-          id
           frontmatter {
             path
             title
+            published
           }
         }
       }
@@ -21,14 +25,15 @@ export default function IndexPage({data}) {
   return (
     <div>
       <h2>Index</h2>
-
+      <ul>
       {data.allMarkdownRemark.edges.map(post => (
-        <Link
+        <li><Link
           key={post.node.id} 
           href={post.node.frontmatter.path}>
           {post.node.frontmatter.title}
-        </Link>
+        </Link></li>
       ))}
+      </ul>
       
     </div>
   );
