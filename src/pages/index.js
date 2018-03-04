@@ -6,14 +6,12 @@ export const indexQuery = graphql`
     allMarkdownRemark(
       limit: 10
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { published: { eq: true } } }
     ) {
       edges {
         node {
           frontmatter {
             path
             title
-            published
           }
         }
       }
