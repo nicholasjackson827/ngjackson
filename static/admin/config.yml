@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: nicholasjackson827/ngjackson16
+  repo: nicholasjackson827/ngjackson
 
 media_folder: static/assets
 
