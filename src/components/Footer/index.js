@@ -7,8 +7,8 @@ const Footer = () => (
       to="/admin/"
       target="_blank"
       style={{
-        color: 'rebeccapurple',
-        textDecoration: 'none',
+        color: 'goldenrod',
+        textDecoration: 'underline',
         textAlign: 'center'
       }}
     >
