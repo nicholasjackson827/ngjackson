@@ -2,31 +2,18 @@ import React from 'react'
 import Link from 'gatsby-link'
 
 const Header = () => (
-  <div
-    style={{
-      background: 'rebeccapurple',
-      marginBottom: '1.45rem',
-    }}
-  >
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '1.45rem 1.0875rem',
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: 'white',
-            textDecoration: 'none',
-          }}
-        >
-          Nicholas Jackson
-        </Link>
-      </h1>
+  //TODO: Change these to Link elements
+  <div>
+    <header>
+    <a href="#" class="home">ngjackson</a>
+    <div class="right">
+      <a href="#">about</a>
+      <a href="#">contact</a>
+      <a href="#">twitter</a>
+      <a href="#">github</a>
+      <a href="#">linkedin</a>
     </div>
+  </header>
   </div>
 )
 

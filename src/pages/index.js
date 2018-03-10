@@ -27,8 +27,9 @@ export default function IndexPage({data}) {
   console.log(numArticles);
 
   return (
-    <div>
-      <h2>Index</h2>
+    <div className="wrapper">
+    <div className="posts">
+      <h1>Posts</h1>
 
       {data.allMarkdownRemark.edges.map((post, i) => {
         const postDate = new Date(post.node.frontmatter.date);
@@ -64,10 +65,29 @@ export default function IndexPage({data}) {
           {i != numArticles - 1 &&
             <div className="post-connector"></div>
           }
-        <hr/>
         </div>
       )})}
+
+      
+
       
     </div>
+
+    <div className="tags-section">
+        <h1>Tags!</h1>
+      <div className="tags">
+      <span className="tag">GraphQL</span>
+      <span className="tag">Okta</span>
+      <span className="tag">Samanage</span>
+      <span className="tag">Stylus</span>
+      <span className="tag">Challenge</span>
+      <span className="tag">GitHub</span>
+      <span className="tag">OSS</span>
+      <span className="tag">Test Tag</span>
+      <span className="tag">Out of Ideas</span>
+      <span className="tag">Short</span>
+      </div></div>
+
+      </div>
   );
 }
