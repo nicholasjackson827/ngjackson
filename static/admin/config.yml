@@ -1,5 +1,5 @@
 backend:
-  name: git-gateway
+  name: github
   repo: nicholasjackson827/ngjackson
 
 media_folder: static/assets
