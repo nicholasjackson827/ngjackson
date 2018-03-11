@@ -2,16 +2,14 @@ import React from 'react'
 import Link from 'gatsby-link'
 
 const Header = () => (
-  //TODO: Change these to Link elements
   <div>
     <header>
-    <a href="#" class="home">ngjackson</a>
+    <Link to="" className="home">ngjackson</Link>
     <div class="right">
-      <a href="#">about</a>
-      <a href="#">contact</a>
-      <a href="#">twitter</a>
-      <a href="#">github</a>
-      <a href="#">linkedin</a>
+      <Link to="about" activeClassName="active">about</Link>
+      <Link to="contact" activeClassName="active">contact</Link>
+      <a href="https://twitter.com/NicholasGrant16">twitter</a>
+      <a href="https://github.com/nicholasjackson827">github</a>
     </div>
   </header>
   </div>

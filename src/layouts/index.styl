@@ -64,8 +64,7 @@ header
     color white
     
     align-self center
-    border-bottom 1px solid rgba(255, 255, 255, 0)
-    
+    border-bottom 1px solid rgba(255, 255, 255, 0)    
     
     &.home
       grid-column-start 2
@@ -84,6 +83,10 @@ header
       transition border 200ms ease
       text-align center
       
+      &.active
+        border-bottom 1px solid rgba(255, 255, 255, 1) !important
+        
+
       &:hover
         border-bottom 1px solid rgba(255, 255, 255, 1)
     
