@@ -28,6 +28,8 @@ export default function IndexPage({data}) {
 
   return (
     <div className="wrapper">
+
+    <h1 className="snazzy-title">Some snazzy title about my website.</h1>
     <div className="posts">
       <h1>Posts</h1>
 
@@ -37,6 +39,7 @@ export default function IndexPage({data}) {
         const postMonth = postDate.toLocaleString(locale, {month: "long"});
         const postDay = postDate.toLocaleString(locale, {day: "2-digit"});
         const postYear = postDate.toLocaleString(locale, {year: "numeric"});
+        const smallPostDate = postMonth + ' ' + postDay + ' ' + postYear;
         return (
         <div className="post">
           <div className="post-top-row">
@@ -53,6 +56,7 @@ export default function IndexPage({data}) {
               </Link>
             </h3>
           </div>
+          <span className="post-date-small">{smallPostDate}</span>
           <p className="post-preview">
             {post.node.excerpt}
           </p>
@@ -74,7 +78,7 @@ export default function IndexPage({data}) {
     </div>
 
     <div className="tags-section">
-        <h1>Tags!</h1>
+        <h1>Tags</h1>
       <div className="tags">
       <span className="tag">GraphQL</span>
       <span className="tag">Okta</span>
