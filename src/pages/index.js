@@ -27,7 +27,7 @@ export default function IndexPage({data}) {
   console.log(numArticles);
 
   return (
-    <div className="wrapper">
+    <div className="index">
 
     <h1 className="snazzy-title">Some snazzy title about my website.</h1>
     <div className="posts">
@@ -36,7 +36,7 @@ export default function IndexPage({data}) {
       {data.allMarkdownRemark.edges.map((post, i) => {
         const postDate = new Date(post.node.frontmatter.date);
         // Use the default 'en-US' language for pre-render since navigator isn't defined yet
-        const locale = typeof(navigator) == 'undefined' ? 'en-US' : naviagtor.language;
+        const locale = typeof(navigator) == 'undefined' ? 'en-US' : navigator.language;
         const postMonth = postDate.toLocaleString(locale, {month: "long"});
         const postDay = postDate.toLocaleString(locale, {day: "2-digit"});
         const postYear = postDate.toLocaleString(locale, {year: "numeric"});

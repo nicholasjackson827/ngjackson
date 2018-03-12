@@ -5,7 +5,7 @@ const Header = () => (
   <div>
     <header>
     <Link to="" className="home">ngjackson</Link>
-    <div class="right">
+    <div className="right">
       <Link to="about" activeClassName="active">about</Link>
       <Link to="contact" activeClassName="active">contact</Link>
       <a href="https://twitter.com/NicholasGrant16">twitter</a>
