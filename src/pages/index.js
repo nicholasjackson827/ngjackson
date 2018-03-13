@@ -30,7 +30,7 @@ export default function IndexPage({data}) {
     <div className="index">
 
     <h1 className="snazzy-title">Some snazzy title about my website.</h1>
-    <div className="posts">
+    <div className="post-overviews">
       <h1>Posts</h1>
 
       {data.allMarkdownRemark.edges.map((post, i) => {
