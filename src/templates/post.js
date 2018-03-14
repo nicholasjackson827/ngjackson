@@ -6,13 +6,21 @@ import './post.styl'
 export default function Template({data}) {
   const {markdownRemark: post} = data;
 
-  const sanitizedHtml = typeof(DOMPurify) == 'undefined' ?
+  console.log({post});
+
+  const sanitizedHtml = typeof(DOMPurify.sanitize) == 'undefined' ?
     post.html : DOMPurify.sanitize(post.html);
 
   return (
     <div className="full-post">
       <h1>{post.frontmatter.title}</h1>
-      <div className="body" dangerouslySetInnerHTML={{__html: sanitizedHtml}} />
+      <div className="body"> 
+        <div className="content" dangerouslySetInnerHTML={{__html: sanitizedHtml}} />
+        {post.frontmatter.tags.length  &&
+         post.frontmatter.tags.map(tag => (
+          <span className="tag">{tag}</span>
+        ))}
+       </div>
     </div>
   )
 }
@@ -24,6 +32,7 @@ export const postQuery = graphql`
       frontmatter {
         path
         title
+        tags
       }
     }
   }
