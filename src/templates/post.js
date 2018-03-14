@@ -6,11 +6,8 @@ import './post.styl'
 export default function Template({data}) {
   const {markdownRemark: post} = data;
 
-  console.log(DOMPurify.sanitize('<script>alert("hi");</script><p>hello</p>'));
-  console.log('Hi!');
-
-  const sanitizedHtml = DOMPurify.sanitize(post.html);
-  console.log(sanitizedHtml);
+  const sanitizedHtml = typeof(DOMPurify) == 'undefined' ?
+    post.html : DOMPurify.sanitize(post.html);
 
   return (
     <div className="full-post">
