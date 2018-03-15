@@ -45,6 +45,7 @@ body
     grid-area footer
 
   .index
+  .tags-index
     grid-area index
     display grid
     grid-template-columns 3fr 1fr
@@ -191,9 +192,13 @@ h1
   cursor pointer
   font-size 14px
   transition all 0.15s ease
+  text-decoration none
   
   &:hover
     background-color darken(#BDD4DE, 10)
+    
+  &:visited
+    color var(--font-color)
   
 .tags
   display flex
@@ -205,6 +210,12 @@ h1
     margin 4px
     text-align center
     font-size 16px
+    
+    a
+      text-decoration none
+      
+      &:visited
+        color var(--font-color)
     
 footer
   background-color var(--accent-color-1)

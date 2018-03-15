@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import Tag from '../Tag'
 
 const PostExcerpt = (props) => {
 
@@ -37,7 +38,7 @@ const PostExcerpt = (props) => {
       <div className="post-tags">
         {frontmatter.tags &&
          frontmatter.tags.map(tag => (
-          <span className="tag">{tag}</span>
+          <Tag tag={tag} />
         ))}
       </div>
       {!props.lastPost &&

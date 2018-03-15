@@ -1,6 +1,6 @@
 import React from 'react';
-import Helmet from 'react-helmet';
 import DOMPurify from 'dompurify';
+import Tag from '../components/Tag';
 import './post.styl'
 
 export default function Template({data}) {
@@ -16,7 +16,7 @@ export default function Template({data}) {
         <div className="content" dangerouslySetInnerHTML={{__html: sanitizedHtml}} />
         {post.frontmatter.tags.length  &&
          post.frontmatter.tags.map(tag => (
-          <span className="tag">{tag}</span>
+          <Tag tag={tag} />
         ))}
        </div>
     </div>
