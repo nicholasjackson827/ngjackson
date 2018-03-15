@@ -7,7 +7,7 @@ import Footer from '../components/Footer'
 import './index.styl'
 
 const TemplateWrapper = ({ children }) => (
-  <div>
+  <div id="page-wrapper">
     <Helmet
       title="ngjackson"
       meta={[
@@ -16,9 +16,9 @@ const TemplateWrapper = ({ children }) => (
       ]}
     />
     <Header />
-    <div>
+    
       {children()}
-    </div>
+    
     <Footer />
   </div>
 )

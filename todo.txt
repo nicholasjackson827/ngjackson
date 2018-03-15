@@ -1,0 +1,14 @@
+TODO.txt
+
+BEFORE GO LIVE:
+- Fix post page
+- Add links to tags
+- Create tags page
+- Update tags on the index page so they're actually links
+- Add disqus
+- Add twitter embeds to each post
+- Add links to footer to GatsbyJS and Netlify
+- Double check the media queries still work since I changed the layout
+
+AFTER GO LIVE:
+- Design/handle pagination
