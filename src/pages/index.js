@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import PostExcerpt from '../components/PostExcerpt'
 
 export const indexQuery = graphql`
   query IndexQuery {
@@ -32,50 +33,9 @@ export default function IndexPage({data}) {
     <h1 className="snazzy-title">Some snazzy title about my website.</h1>
     <div className="post-overviews">
       <h1>Posts</h1>
-
-      {data.allMarkdownRemark.edges.map((post, i) => {
-        const postDate = new Date(post.node.frontmatter.date);
-        // Use the default 'en-US' language for pre-render since navigator isn't defined yet
-        const locale = typeof(navigator) == 'undefined' ? 'en-US' : navigator.language;
-        const postMonth = postDate.toLocaleString(locale, {month: "long"});
-        const postDay = postDate.toLocaleString(locale, {day: "2-digit"});
-        const postYear = postDate.toLocaleString(locale, {year: "numeric"});
-        const smallPostDate = postMonth + ' ' + postDay + ' ' + postYear;
-        return (
-        <div className="post">
-          <div className="post-top-row">
-            <div className="post-date">
-              <span className="post-month">{postMonth}</span>
-              <span className="post-day">{postDay}</span>
-              <span className="post-year">{postYear}</span>
-            </div>
-            <h3 className="post-title">
-              <Link
-                key={post.node.id}
-                to={post.node.frontmatter.path}>
-                {post.node.frontmatter.title}
-              </Link>
-            </h3>
-          </div>
-          <span className="post-date-small">{smallPostDate}</span>
-          <p className="post-preview">
-            {post.node.excerpt}
-          </p>
-          <div className="post-tags">
-            {post.node.frontmatter.tags &&
-             post.node.frontmatter.tags.map(tag => (
-              <span className="tag">{tag}</span>
-            ))}
-          </div>
-          {i != numArticles - 1 &&
-            <div className="post-connector"></div>
-          }
-        </div>
-      )})}
-
-      
-
-      
+      {data.allMarkdownRemark.edges.map((post, i) => (
+        <PostExcerpt post={post} lastPost={i == numArticles - 1} />
+      ))}
     </div>
 
     <div className="tags-section">
