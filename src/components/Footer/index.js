@@ -4,7 +4,7 @@ import Link from 'gatsby-link'
 const Footer = () => (
   <footer>
     <p>Made by Nicholas Jackson</p>
-    <p>with GatsbyJS and hosted on Netlify</p>
+    <p>with <a href="https://www.gatsbyjs.org/">GatsbyJS</a> and hosted on <a href="https://www.netlify.com/">Netlify</a></p>
   </footer>
 )
 

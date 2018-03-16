@@ -1,6 +1,7 @@
 import React from 'react';
 import DOMPurify from 'dompurify';
 import Tag from '../components/Tag';
+import Disqus from 'disqus-react';
 import './post.styl'
 
 export default function Template({data}) {
@@ -8,6 +9,13 @@ export default function Template({data}) {
 
   const sanitizedHtml = typeof(DOMPurify.sanitize) == 'undefined' ?
     post.html : DOMPurify.sanitize(post.html);
+
+  const disqusShortname = 'ngjackson';
+  const disqusConfig = {
+    url: 'https://ngjackson.com/' + post.frontmatter.path,
+    identifier: post.frontmatter.path,
+    title: post.frontmatter.title
+  }
 
   return (
     <div className="full-post">
@@ -18,7 +26,8 @@ export default function Template({data}) {
          post.frontmatter.tags.map(tag => (
           <Tag tag={tag} />
         ))}
-       </div>
+      </div>
+      <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
     </div>
   )
 }
