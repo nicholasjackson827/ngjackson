@@ -246,13 +246,8 @@ footer
 
 @media all and (max-width: 768px) 
   .index
-    grid-template-areas \
-      "header header header header" \
-      ". title title ." \
-      ". posts posts ." \
-      "footer footer footer footer"
+    grid-template-areas "title title" "posts posts" !important
   
-  .index
     .snazzy-title
       font-size 40px
       margin 30px 0px
@@ -262,7 +257,7 @@ footer
   .post-date
     display none !important
     
-  .posts
+  .post-overviews
     .post
       margin 0px
       margin-top 32px
@@ -273,7 +268,7 @@ footer
         border-bottom 0px
 
       .post-top-row
-        .post-title
+        h3.post-title
           margin 0px
           
       .post-date-small
