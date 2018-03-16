@@ -2,18 +2,9 @@ import React from 'react'
 import Link from 'gatsby-link'
 
 const Footer = () => (
-  <footer style={{ textAlign: 'center' }}>
-    <Link 
-      to="/admin/"
-      target="_blank"
-      style={{
-        color: 'rebeccapurple',
-        textDecoration: 'none',
-        textAlign: 'center'
-      }}
-    >
-      Site Admin Page
-    </Link>
+  <footer>
+    <p>Made by Nicholas Jackson</p>
+    <p>with <a href="https://www.gatsbyjs.org/">GatsbyJS</a> and hosted on <a href="https://www.netlify.com/">Netlify</a></p>
   </footer>
 )
 

@@ -1,0 +1,291 @@
+// Imports
+@import url('https://fonts.googleapis.com/css?family=Open+Sans')
+
+// Variables
+:root
+  --font-color #212529
+  --font-color-transparent rgba(33,37,41,0)
+  --background-color #EFEFEF
+  --accent-color-1 #2B3A42
+  --accent-color-2 #BDD4DE
+  --accent-color-3 #FF530D
+  --connector-width 4px
+
+// All of the layout stuff (Hooray CSS Grid!)
+html
+  height 100%
+  width 100%
+  color var(--font-color)
+
+body
+  margin 0
+  background var(--background-color)
+  min-height 100%
+  
+#___gatsby
+  min-height 100vh
+  
+// .index
+// .static-page
+// .full-post
+#page-wrapper
+  min-height 100vh
+  display grid
+  grid-template-areas \
+    "header header header" \
+    ". index ." \
+    "footer footer footer"
+  grid-template-columns 10% 1fr 10%
+  grid-template-rows 70px 1fr 70px
+     
+  header
+    grid-area header
+    
+  footer
+    grid-area footer
+
+  .index
+  .tags-index
+    grid-area index
+    display grid
+    grid-template-columns 3fr 1fr
+    grid-template-rows 200px 1fr
+    grid-template-areas \
+      "title title" \
+      "posts tags"
+    
+    h1.snazzy-title
+      grid-area title
+      
+    .post-overviews
+      grid-area posts
+    
+    .tags-section
+      grid-area tags
+// Now for the styles...
+body
+  font-family 'Open Sans', sans-serif
+  margin 0
+
+header
+  // grid-area header
+  display grid
+  grid-template-columns 10% 1fr 3fr 10%
+  background-color var(--accent-color-1)
+  min-height 60px
+  
+  a
+    text-decoration none
+    color white
+    
+    align-self center
+    border-bottom 1px solid rgba(255, 255, 255, 0)    
+    
+    &.home
+      grid-column-start 2
+      font-weight bold
+      font-size 24px
+      
+  
+  .right
+    display grid
+    grid-template-columns repeat(4, 1fr)
+    grid-gap 12px
+    justify-self right
+    align-self center
+    
+    a
+      transition border 200ms ease
+      text-align right
+      justify-self right
+      
+      &.active
+        border-bottom 1px solid rgba(255, 255, 255, 1) !important
+        
+
+      &:hover
+        border-bottom 1px solid rgba(255, 255, 255, 1)
+    
+h1.snazzy-title
+  font-size 48px
+  align-self center
+  
+h1
+  font-size 36px
+    
+.post-overviews
+  .post
+    margin 0px 0px
+    padding-right 24px
+    position relative
+    
+    .post-top-row
+      display flex
+      
+      .post-title
+        font-size 32px
+        margin 0
+        align-self center
+        margin-left 12px
+        border-bottom 3px solid var(--font-color-transparent)
+        transition border 0.2s ease
+        
+        &:hover
+          border-bottom 3px solid var(--font-color)
+        
+        a
+          text-decoration none
+          color var(--font-color)
+
+      .post-date
+        display grid
+        background-color var(--accent-color-3)
+        border-radius 50%
+        min-width 72px
+        max-width 72px
+        min-height 72px
+        max-height 72px
+        text-align center
+        color black
+        
+        .post-month
+          color white
+          font-size 12px
+          align-self end
+          
+        .post-day
+          color white
+          font-size 32px
+          align-self center
+          margin -6px 0px
+          
+        .post-year
+          color white
+          font-size 12px
+    
+    .post-date-small
+      display none
+
+    .post-preview
+    .post-tags
+      margin-left 86px
+      
+    .post-preview
+      margin-top 0px
+      font-size 18px
+      
+    .post-connector
+      position absolute
+      top 70px
+      bottom -100px
+      left calc((72px - var(--connector-width)) / 2)
+      
+      width var(--connector-width)
+      background var(--accent-color-3)
+      
+// Global tag styles
+.tag
+  background-color var(--accent-color-2)
+  color black
+  padding 4px 8px
+  margin-right 12px
+  cursor pointer
+  font-size 14px
+  transition all 0.15s ease
+  text-decoration none
+  
+  &:hover
+    background-color darken(#BDD4DE, 10)
+    
+  &:visited
+    color var(--font-color)
+  
+.tags
+  display flex
+  flex-wrap wrap
+  justify-content space-between
+  
+  .tag
+    flex 1 auto
+    margin 4px
+    text-align center
+    font-size 16px
+    
+    a
+      text-decoration none
+      
+      &:visited
+        color var(--font-color)
+    
+footer
+  background-color var(--accent-color-1)
+  text-align center
+  padding 16px 0px
+  color white
+  font-size 12px
+  
+  a
+    text-decoration none
+    border-bottom 1px solid white
+    color white
+    
+  p
+    margin 0px
+    
+@media all and (max-width: 1199px)
+  .index
+  header
+    grid-template-columns 10% 3fr 1fr 10%
+
+
+@media all and (max-width: 991px) 
+  .index
+  header
+    grid-template-columns 5% 3fr 1fr 5%
+
+
+@media all and (max-width: 768px) 
+  .index
+    grid-template-areas "title title" "posts posts" !important
+  
+    .snazzy-title
+      font-size 40px
+      margin 30px 0px
+    
+  .tags-section
+  .post-connector
+  .post-date
+    display none !important
+    
+  .post-overviews
+    .post
+      margin 0px
+      margin-top 32px
+      padding-bottom 32px
+      border-bottom 5px solid var(--accent-color-3)
+      
+      &:last-child
+        border-bottom 0px
+
+      .post-top-row
+        h3.post-title
+          margin 0px
+          
+      .post-date-small
+        display inline
+        
+      .post-preview
+        margin 16px 0px
+        
+      .post-tags
+        margin 0px
+
+@media all and (max-width: 575px) 
+  header
+    grid-template-columns 5% 1fr
+    .right
+      display none
+      
+  .posts
+    .post
+      margin 30px 0px

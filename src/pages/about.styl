@@ -1,0 +1,14 @@
+.static-page
+  display grid
+  grid-template-areas \
+    "header header header header" \
+    ". title title ." \
+    ". body body ." \
+    "footer footer footer footer"
+
+  h1
+    grid-area title
+    
+  .body
+    grid-area body
+    font-size 20px

@@ -1,0 +1,17 @@
+TODO.txt
+
+BEFORE GO LIVE:
+- Fix post page [DONE]
+- Export page snippet to a component [DONE]
+- Create tags pages [DONE]
+- Add links to tags [DONE]
+- Update tags on the index page so they're actually links [DONE]
+- Add disqus [DONE]
+- Add twitter embeds to each post
+- Add links to footer to GatsbyJS and Netlify [DONE]
+- Double check the media queries still work since I changed the layout
+
+AFTER GO LIVE:
+- Design/handle pagination
+- Create single page that lists all tags
+- Add page animations/transitions
