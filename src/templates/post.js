@@ -17,9 +17,19 @@ export default function Template({data}) {
     title: post.frontmatter.title
   }
 
+  const postDate = new Date(post.frontmatter.date);
+  // Use the default 'en-US' language for pre-render since navigator isn't defined yet
+  const locale = typeof(navigator) == 'undefined' ? 'en-US' : navigator.language;
+  const postMonth = postDate.toLocaleString(locale, {month: "long"});
+  const postDay = postDate.toLocaleString(locale, {day: "2-digit"});
+  const postYear = postDate.toLocaleString(locale, {year: "numeric"});
+  const smallPostDate = postMonth + ' ' + postDay + ' ' + postYear;
+
+
   return (
     <div className="full-post">
       <h1>{post.frontmatter.title}</h1>
+      <span className="post-date">{smallPostDate}</span>
       <div className="body"> 
         <div className="content" dangerouslySetInnerHTML={{__html: sanitizedHtml}} />
         {post.frontmatter.tags.length  &&
@@ -40,6 +50,7 @@ export const postQuery = graphql`
         path
         title
         tags
+        date
       }
     }
   }

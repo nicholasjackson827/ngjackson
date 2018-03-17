@@ -118,6 +118,7 @@ h1
   .post
     margin 0px
     padding-right 2rem
+    padding-bottom 4rem
     position relative
     
     .post-top-row
@@ -148,6 +149,7 @@ h1
         max-height 5rem
         text-align center
         color black
+        z-index 10
         
         .post-month
           color white
@@ -177,9 +179,10 @@ h1
       
     .post-connector
       position absolute
+      z-index 0
       top 70px
-      bottom -100px
-      left calc((72px - var(--connector-width)) / 2)
+      bottom -70px
+      left calc((5rem - var(--connector-width)) / 2)
       
       width var(--connector-width)
       background var(--accent-color-3)
