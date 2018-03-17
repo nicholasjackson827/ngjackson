@@ -14,11 +14,26 @@
   h1
     margin 4rem 0rem 1rem 0rem
     
+
+  
+  .header-wrapper
+    display inline
+    
+    .chain
+      opacity 0
+      transition all 0.2s ease
+
+      .active
+        opacity 1 !important
+    
+    *
+      display inline
+    
   .post-date
     display block
     font-size 1.5em
     margin-bottom 2rem
-    
+      
 
   a:not(.tag)
     color var(--accent-color-3)

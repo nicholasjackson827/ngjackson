@@ -25,6 +25,7 @@ export default function Template({data}) {
   const postYear = postDate.toLocaleString(locale, {year: "numeric"});
   const smallPostDate = postMonth + ' ' + postDay + ' ' + postYear;
 
+
   return (
     <div className="full-post">
       <h1>{post.frontmatter.title}</h1>
