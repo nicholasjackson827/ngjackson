@@ -3473,6 +3473,12 @@ gatsby-module-loader@^1.0.11:
     babel-runtime "^6.26.0"
     loader-utils "^0.2.16"
 
+gatsby-plugin-google-analytics@^1.0.24:
+  version "1.0.24"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-analytics/-/gatsby-plugin-google-analytics-1.0.24.tgz#13469eac4e35a1a3e73e8b2c3bfcf17fa73d28fb"
+  dependencies:
+    babel-runtime "^6.26.0"
+
 gatsby-plugin-netlify-cms@^1.0.11:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-netlify-cms/-/gatsby-plugin-netlify-cms-1.0.11.tgz#73dedc1d81d9033ea43f077965ace1c762770fa0"

@@ -2,6 +2,8 @@ backend:
   name: github
   repo: nicholasjackson827/ngjackson
 
+publish_mode: editorial_workflow
+
 media_folder: static/assets
 
 collections:
