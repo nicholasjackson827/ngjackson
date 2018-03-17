@@ -32,6 +32,8 @@ export default function Template({data}) {
       <span className="post-date">{smallPostDate}</span>
       <div className="body"> 
         <div className="content" dangerouslySetInnerHTML={{__html: sanitizedHtml}} />
+      </div>
+      <div className="tags">
         {post.frontmatter.tags.length  &&
          post.frontmatter.tags.map(tag => (
           <Tag tag={tag} />
