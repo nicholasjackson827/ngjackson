@@ -28,6 +28,38 @@ Netlify CMS is an open source CMS that provides a clean GUI to write, edit, and 
 
 ## Design
 
-The site is built from scratch with CSS Grid as the layout. I use nothing but Bootstrap at work, so it was tempting to pull that in, but to keep the site fast and simple, I decided to write my own CSS from scratch. 
+The site is built from scratch with CSS grid as the layout. I use nothing but Bootstrap at work, so it was tempting to pull that in, but to keep the site fast and simple, I decided to write my own CSS from scratch. 
 
-For those who haven't used it, CSS Grid is the newest way to build your website layout. If you inspect my homepage, 
+For those who haven't used it, CSS grid is the newest way to build your website layout. If you inspect my homepage, you'll see that I use CSS grid in 5 different places, just for a simple layout (entire page wrapper, 2 places in the header, post previews, and the date objects). 
+
+Everything else about the design is pretty standard CSS with nothing too special. I eventually have hopes to add some slick page transitions, but that's for another day. 
+
+## Deployment
+
+This is probably my favorite part of my website. It's so incredibly slick, mostly thanks to Git and [Netlify](https://www.netlify.com/) where my site is hosted. Their slogan is "Write frontend code. Push it. We handle the rest." and that could not be more accurate. 
+
+### Design Changes
+
+Here's my workflow for making a basic design change:
+
+1. Make sure I'm not on `master` locally (if I want to review the changes before they get published, otherwise I can just commit to `master`).
+2. Make some changes on a branch and commit.
+3. Push that branch to GitHub.
+4. Open up a pull request for that branch (if I didn't have one already).
+5. Netlify **automatically** recognizes my PR and starts a staging build from the branch. 
+6. Once Netlify builds my site in staging, I get a link to preview it posted to the PR in GitHub. 
+7. If I feel good about how it looks, I have 2 options: merge the PR with master _or_ go to my app in Netlify and click "Publish".
+
+It may look like a lot of steps, but that's if I want to preview the changes before they get deployed. If I am just fixing a typo or something, I can just make a change on `master`, commit it, and push it and Netlify takes care of the rest. 
+
+### Publishing New Content
+
+As I mentioned in the content section, Netlify CMS (how I write my posts) integrates with my Git workflow and allows me to write `.md` files and publish them without touching any code. 
+
+Since I'm still working out bugs in the design, I want to be able to preview what my new posts look like before I push them live. Netlify CMS offers something called the "editorial workflow" which you can enable/disable at your will. [The documentation](https://github.com/utlib/netlify-cms-test/blob/master/docs/editorial-workflow.md) does a great job of describing it, but it allows you to save your new post without publishing it. What this means in Git terms is that it will commit the post to a new branch and open a pull request on that branch. 
+
+"But wait!" you may ask. "Doesn't Netlify **automatically** build a preview for you whenever you open a pull request??" Yes! Yes they do. That means that whenever you click "Save Draft," you will be able to preview the new post on a preview instance of your site, all thanks to Netlify. 
+
+Then, once you're happy with your post, you can approve and publish the draft which merges the pull request into `master` and deletes your branch at which point Netlify pulls your new post and adds it to your production site.
+
+That's a 30,000 foot view of how my website is built and works. If you have any questions, leave a comment below and I'll be sure to answer! Also feel free to let me know if you have any requests for me to write about. 
