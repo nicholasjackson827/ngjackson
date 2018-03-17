@@ -5,6 +5,8 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-stylus',
+    'gatsby-transformer-remark',
+    'gatsby-plugin-netlify-cms',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -12,7 +14,12 @@ module.exports = {
         name: 'pages'
       }
     },
-    'gatsby-transformer-remark',
-    'gatsby-plugin-netlify-cms'
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: 'UA-115910501-1',
+        head: false
+      }
+    }
   ],
 };
