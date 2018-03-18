@@ -155,10 +155,68 @@ So all of our grid elements are filled in to the regions we want, but there's no
 
 and the output should look like this:
 
-![](/static/assets/firefox_2018-03-18_18-40-14.png)
+![null](/static/assets/firefox_2018-03-18_18-40-14.png)
 
 That's it for the grid aspects of the site! The rest will just be making it a bit prettier and closer to what GitHub has. 
 
 ### Few Little Details
 
-There are a few things our layout is missing style-wise that the 
+There are a few things our layout is missing style-wise that the GitHub example has. Let's capitalize the letters, adjust the font and font color, add a border, and put some padding around the box. We can do that with:
+
+```stylus
+.contributions
+  text-transform capitalize
+  font-family Helvetica
+  color #767676
+  border 1px solid #d1d5da
+  border-radius 3px
+  padding 8px
+```
+
+The last thing we need to do (well, we don't _have_ to, but makes it look cooler) is add some colors other than the standard green. We could do this with CSS, but JavaScript will be easiest. It's just for demo purposes anyways, right? 
+
+Here's a basic way to do it:
+
+```javascript
+// Create an array of the colors (from GitHub)
+const colors = ['#eee', '#c6e48b', '#7bc96f', '#239a3b', '#196127']
+
+// Iterate over all the blocks and assign a random color
+document.querySelectorAll('.block').forEach(block => {
+  const randomColor = colors[Math.floor(Math.random()*colors.length)];
+  block.style.background = randomColor;
+});
+```
+
+With this JS, we'll get a random distribution of colors throughout the chart:
+
+![null](/static/assets/firefox_2018-03-18_18-50-27.png)
+
+Looks good, but not very realistic. Is there really an equal distribution of "high commit" days and "low commit" days? Not really. To create a non-evenly distributed result set without getting nerdy with statistics, we can just "weight" the colors by adding more of them to the array of colors. Like this:
+
+```javascript
+// Create an array to put the colors in
+let colors = [];
+
+// Create a bunch of different color arrays, each with different 'weights'
+colors.push(Array(10).fill('#eee'));
+colors.push(Array(4).fill('#c6e48b'));
+colors.push(Array(2).fill('#7bc96f'));
+colors.push(Array(2).fill('#239a3b'));
+colors.push(Array(1).fill('#196127'));
+
+// Flatten the array
+const weightedColors = [].concat.apply([], colors)
+
+// Iterate over all the blocks and assign a random color
+document.querySelectorAll('.block').forEach(block => {
+  const randomColor = weightedColors[Math.floor(Math.random()*weightedColors.length)];
+  block.style.background = randomColor;
+});
+```
+
+That looks a lot more realistic now! Here's the finished product:
+
+![](/static/assets/firefox_2018-03-18_18-55-52.png)
+
+This is just one of the many new ways to use CSS grid. If you have comments, questions, or issues with this tutorial, please leave a comment below and I'll get back to you!
