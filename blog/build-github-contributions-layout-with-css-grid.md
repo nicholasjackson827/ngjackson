@@ -10,6 +10,8 @@ Here's what we're going to have built by the end of this tutorial:
 
 ![GitHub Contributions layout](/static/assets/chrome_2018-03-18_17-46-45.png)
 
+If you've never seen this chart, it's basically a heatmap of all your commits for code checked in on GitHub. You have the months going across the top, the days of the week going down the side, and each block represents a day. The darker the color, the more commits for that day. 
+
 There are plenty of ways to build what GitHub has (GitHub does it with SVG), but we'll build it with the new CSS layout tool, CSS grid. This tutorial will go over CSS grid basics and some neat tricks that utilize CSS grid's power. 
 
 If you're anxious and just want to see the finished code, check it out [here on CodePen](https://codepen.io/nicholasjackson827/pen/yKVgwK).
@@ -62,7 +64,7 @@ We'll need content for each of the months, each of the days of the week shown (j
 </div>
 ```
 
-Few things to note. I've added a `.spacer` element at the front that will work as the spacer in the upper left hand corner. I've added some classes to each of the elements so we can easily identify them. The `.five-weeks` is so we can easily identify the months that have 5 weeks instead of 4 so we can have them span 5 columns instead of just 4. And lastly, I've omitted the vast majority of the `.block` elements for brevity sake. To fill in the rest of them, if you're using [Emmet](https://emmet.io/) (which you should be!), you can just type `.block*365` and hit `TAB` to have it populate 364 `div` elements for you! Nifty. 
+Few things to note. I've added a `.spacer` element at the front that will work as the spacer in the upper left hand corner. I've added some classes to each of the elements so we can easily identify them. The `.five-weeks` is useful to identify the months that have 5 weeks instead of 4 so we can have them span 5 columns instead of just 4. And lastly, the `.block` elements. I've omitted the vast majority of the `.block` elements for brevity sake. To fill in the rest of them, if you're using [Emmet](https://emmet.io/) (which you should be!), you can just type `.block*364` and hit `TAB` to have it populate 364 `div` elements for you! Nifty. 
 
 While it doesn't look like much, this is all the content we're going to need to create our beautiful layout! Next, the fun stuff. 
 
@@ -72,7 +74,7 @@ For this section, I'll be using [Stylus](http://stylus-lang.com/), a CSS pre-pro
 
 ### Making Rows and Columns
 
-First thing's first, the grid! We can apply `display: grid` to the `.container` element, but nothing's going to happen. Why? We need to add some columns and rows! For the columns, we'll need a total of 53 (1 for the days of the week and 52 for each week of the year). For the rows, we'll need a total of 8 (1 for the months of the year and 7 for each day of the week). Here's how we can define that in CSS:
+First thing's first, the grid! We apply `display: grid` to the `.container` element, but nothing happens. Why? We need to add some columns and rows! For the columns, we'll need a total of 53 (1 for the days of the week and 52 for each week of the year). For the rows, we'll need a total of 8 (1 for the months of the year and 7 for each day of the week). Here's how we can define that in CSS:
 
 ```stylus
 .contributions
@@ -87,7 +89,7 @@ If you inspect the grid with your dev tools (I'll be using [Firefox Developer Ed
 
 All the words are on top of one another, but we'll fix that in a minute. Let's talk about how we defined the columns and rows. 
 
-We defined the columns with `grid-template-columns 50px repeat(52, 20px)`. This tells the browser that we want some columns. The first column is going to be a static `50px` wide. Then, we use the `repeat()` function which prevents us from having to type `20px` 52 times. `repeat(52, 20px)` is the same as typing `20px 20px 20px ... 20px` 50 times. We defined the rows in a similar manner with `grid-template-rows 30px repeat(7, 20px)`. This means we want one row `30px` tall and 7 rows `20px` tall. You'll be able to see the extra tall first row and extra wide first column when inspecting the grid. This is to give us a bit of extra room for the labels. Now for the words!
+We defined the columns with `grid-template-columns: 50px repeat(52, 20px)`. This tells the browser that we want some columns. The first column is going to be a static `50px` wide. Then, we use the `repeat()` function which prevents us from having to type `20px` 52 times. We defined the rows in a similar manner with `grid-template-rows: 30px repeat(7, 20px)`. This means we want one row `30px` tall and 7 rows `20px` tall. You'll be able to see the extra tall first row and extra wide first column when inspecting the grid. This is to give us a bit of extra room for the labels. Now for the words!
 
 ### Placing the Text
 
@@ -108,7 +110,7 @@ While this is great, not all months of the year have 4 weeks, some of them have 
   grid-column-end span 5
 ```
 
-Now for the days of the week. We want to skip the first 2 rows. The first row is just a blank row, and since the weeks start with Sunday (in this case at least), we need to leave a gap for those. Also, we want to make sure the days stay in the first column.
+Now for the days of the week. We want to skip the first 2 rows. The first row is just a blank row reserved for the month labels, and since the weeks start with Sunday (in this case at least), we need to leave a gap for those. Also, we want to make sure the days stay in the first column.
 
 ```stylus
 .day
@@ -140,9 +142,9 @@ This causes some slightly unexpected behavior. What you get looks like the follo
 
 ![null](/static/assets/firefox_2018-03-18_18-32-04.png)
 
-Instead of filling our grid in nicely in the empty cells, the browser starts at the very first cell that we haven't yet defined. Since we've defined items to go in the first 6 rows and the first column, it only has the last 2 rows to fill in the blocks! Fortunately, there's a neat feature of grid parent elements called `grid-auto-flow` that allows us to define how the browser fills in the cells. If we add `grid-auto-flow: dense` to the `.contributions` element, this tells the browser to fit in new elements as soon as it can. It's a complex (but powerful) attribute so I'd recommending checking out [the docs](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow). 
+Instead of filling our grid in nicely in the empty cells, the browser starts at the very first cell that we haven't yet defined. Since we've defined items to go in the first 6 rows and the first column, it only has the last 2 rows to fill in the blocks! Fortunately, there's a neat feature of grid parent elements called `grid-auto-flow` that allows us to define how the browser fills in the cells. If we add `grid-auto-flow: dense` to the `.contributions` element, this tells the browser to fit in new elements as soon as it can. It's a confusing (but powerful) attribute so I'd recommending checking out [the docs](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow). 
 
-So all of our grid elements are filled in to the regions we want, but there's no spacing so it just looks like one big green rectangle. To fix that, let's add some gap between the cells with `grid-gap: 4px 4px` on the `.contributions` element. Your `.contributions` element should now look like this:
+So all of our grid elements are filled in to the regions we want, but there's no spacing so it just looks like one big green rectangle. To fix that, let's add some gap between the cells with `grid-gap: 4px` on the `.contributions` element. Your `.contributions` element should now look like this:
 
 ```stylus
 .contributions
@@ -161,7 +163,7 @@ That's it for the grid aspects of the site! The rest will just be making it a bi
 
 ### Few Little Details
 
-There are a few things our layout is missing style-wise that the GitHub example has. Let's capitalize the letters, adjust the font and font color, add a border, and put some padding around the box. We can do that with:
+There are a few things our layout is missing style-wise if we want to _exactly_ match GitHub. Let's capitalize the letters, adjust the font and font color, add a border, and put some padding around the box. We can do that with the following statements:
 
 ```stylus
 .contributions
@@ -188,7 +190,7 @@ document.querySelectorAll('.block').forEach(block => {
 });
 ```
 
-With this JS, we'll get a random distribution of colors throughout the chart:
+With this JS, we'll get an even random distribution of colors throughout the chart:
 
 ![null](/static/assets/firefox_2018-03-18_18-50-27.png)
 
@@ -218,5 +220,7 @@ document.querySelectorAll('.block').forEach(block => {
 That looks a lot more realistic now! Here's the finished product:
 
 ![](/static/assets/firefox_2018-03-18_18-55-52.png)
+
+With just 22 lines of CSS (6 of which are extra styling), we have created a clean, simple representation of some interesting data. 
 
 This is just one of the many new ways to use CSS grid. If you have comments, questions, or issues with this tutorial, please leave a comment below and I'll get back to you!
