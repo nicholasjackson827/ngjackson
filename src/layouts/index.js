@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import 'prismjs/themes/prism.css';
+import './custom-prism.styl';
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import './index.styl'
