@@ -30,7 +30,13 @@
     code:not([class*="language-"])
       background-color darken(#EFEFEF, 10)
       padding 0em 0.25em
+      max-width 100%
+      overflow-y scroll
       
+    .gatsby-highlight
+      display block
+      max-width 92vw
+
     img
       max-width 100%
       
@@ -45,11 +51,11 @@
     margin-top 32px
     
 @media all and (max-width: 768px) 
-  .full-post  
+  .full-post 
     h1
       font-size 8vw
       margin 30px 0px
       
     .body
-      .tag
+      .tag:not(.token)
         font-size 5vw

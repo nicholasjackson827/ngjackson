@@ -35,7 +35,7 @@ body
     "header header header" \
     ". index ." \
     "footer footer footer"
-  grid-template-columns auto minmax(200px, 986px) auto
+  grid-template-columns minmax(2rem, 1fr) minmax(200px, 986px) minmax(2rem, 1fr)
   grid-template-rows 70px 1fr 70px
      
   header
@@ -71,24 +71,27 @@ body
 header
   // grid-area header
   display grid
-  grid-template-columns 10% 1fr 3fr 10%
+  // grid-template-columns 10% 1fr 3fr 10%
+  grid-template-columns minmax(2rem, 1fr) minmax(200px, 986px) minmax(2rem, 1fr)
   background-color var(--accent-color-1)
   min-height 100%
   
   a
     text-decoration none
     color white
-    
     align-self center
     border-bottom 1px solid rgba(255, 255, 255, 0)    
     
     &.home
       grid-column-start 2
+      grid-row-start 1
       font-weight bold
       font-size 1.5em
       
   
   .right
+    grid-column-start 2
+    grid-row-start 1
     display grid
     grid-template-columns repeat(4, 1fr)
     grid-gap 1em
@@ -238,22 +241,22 @@ footer
     margin 0rem
     
 @media all and (max-width: 1199px)
-  .index
-  header
-    grid-template-columns 10% 3fr 1fr 10%
+  // .index
+  // header
+  //   grid-template-columns 10% 3fr 1fr 10%
 
 
 @media all and (max-width: 991px) 
-  .index
-  header
-    grid-template-columns 5% 3fr 1fr 5%
+  // .index
+  // header
+  //   grid-template-columns 5% 3fr 1fr 5%
 
 
 @media all and (max-width: 768px) 
 
   #page-wrapper
     grid-template-columns 4vw 3fr 4vw
-    grid-template-rows 8vh 1fr 8vh
+    grid-template-rows min(50px, 8vh) 1fr 8vh
 
   .index
   .tags-index
