@@ -5,7 +5,6 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-stylus',
-    'gatsby-transformer-remark',
     'gatsby-plugin-netlify-cms',
     {
       resolve: 'gatsby-source-filesystem',
@@ -20,6 +19,19 @@ module.exports = {
         trackingId: 'UA-115910501-1',
         head: false
       }
-    }
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: "language-",
+            },
+          },
+        ],
+      },
+    },
   ],
 };

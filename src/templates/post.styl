@@ -27,9 +27,12 @@
       &:hover
         color var(--accent-color-3)
       
-    code
+    code:not([class*="language-"])
       background-color darken(#EFEFEF, 10)
       padding 0em 0.25em
+      
+    img
+      max-width 100%
       
   .tags
     display flex
