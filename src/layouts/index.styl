@@ -35,7 +35,7 @@ body
     "header header header" \
     ". index ." \
     "footer footer footer"
-  grid-template-columns 10% 1fr 10%
+  grid-template-columns auto minmax(200px, 986px) auto
   grid-template-rows 70px 1fr 70px
      
   header
@@ -129,15 +129,13 @@ h1
         margin 0
         align-self center
         margin-left 12px
-        border-bottom 3px solid var(--font-color-transparent)
-        transition border 0.2s ease
-        
-        &:hover
-          border-bottom 3px solid var(--font-color)
         
         a
           text-decoration none
           color var(--font-color)
+          
+          &:hover
+            text-decoration underline
 
       .post-date
         display grid
