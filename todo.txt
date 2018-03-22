@@ -2,8 +2,7 @@ HAVE-TO-HAVE:
 - Design/handle pagination
 - Create single page that lists all tags
 - Fix 404 page
-- Fix image routing
-- Add library for code embeds
+- Add lightbox functionality (most likely homegrown)
 
 NICE-TO-HAVE:
 - Add page animations/transitions
@@ -21,3 +20,5 @@ DONE:
 - Add Google Analytics
 - Variable font widths of title elements based on 'vw'
 - Double check the media queries still work since I changed the layout
+- Fix image routing
+- Add library for code embeds

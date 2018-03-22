@@ -8,7 +8,8 @@ tags:
 ---
 Here's what we're going to have built by the end of this tutorial:
 
-![GitHub Contributions layout](/static/assets/chrome_2018-03-18_17-46-45.png)
+
+![GitHub Contributions layout](/assets/chrome_2018-03-18_17-46-45.png)
 
 If you've never seen this chart, it's basically a heatmap of all your commits for code checked in on GitHub. You have the months going across the top, the days of the week going down the side, and each block represents a day. The darker the color, the more commits for that day. 
 
@@ -85,7 +86,8 @@ First thing's first, the grid! We apply `display: grid` to the `.container` elem
 
 If you inspect the grid with your dev tools (I'll be using [Firefox Developer Edition](https://www.mozilla.org/en-US/firefox/developer/) for its killer CSS grid features) and turn on outlines for your grid, you'll see we now have a nice table with 53 columns and 8 rows that looks something like this:
 
-![null](/static/assets/firefox_2018-03-18_18-09-59.png)
+
+![null](/assets/firefox_2018-03-18_18-09-59.png)
 
 All the words are on top of one another, but we'll fix that in a minute. Let's talk about how we defined the columns and rows. 
 
@@ -127,7 +129,9 @@ Nice! However, we need a little bit of extra space at the top and start at row 2
 
 We've got the basic shell at this point. It should look something like this:
 
-![null](/static/assets/firefox_2018-03-18_18-27-52.png)
+
+![null](/assets/firefox_2018-03-18_18-27-52.png)
+
 
 ### Styling the Blocks
 
@@ -140,7 +144,9 @@ There are a few things we need to do to the blocks. We need to fill them in the 
 
 This causes some slightly unexpected behavior. What you get looks like the following:
 
-![null](/static/assets/firefox_2018-03-18_18-32-04.png)
+
+![null](/assets/firefox_2018-03-18_18-32-04.png)
+
 
 Instead of filling our grid in nicely in the empty cells, the browser starts at the very first cell that we haven't yet defined. Since we've defined items to go in the first 6 rows and the first column, it only has the last 2 rows to fill in the blocks! Fortunately, there's a neat feature of grid parent elements called `grid-auto-flow` that allows us to define how the browser fills in the cells. If we add `grid-auto-flow: dense` to the `.contributions` element, this tells the browser to fit in new elements as soon as it can. It's a confusing (but powerful) attribute so I'd recommending checking out [the docs](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow). 
 
@@ -157,7 +163,9 @@ So all of our grid elements are filled in to the regions we want, but there's no
 
 and the output should look like this:
 
-![null](/static/assets/firefox_2018-03-18_18-40-14.png)
+
+![null](/assets/firefox_2018-03-18_18-40-14.png)
+
 
 That's it for the grid aspects of the site! The rest will just be making it a bit prettier and closer to what GitHub has. 
 
@@ -192,7 +200,9 @@ document.querySelectorAll('.block').forEach(block => {
 
 With this JS, we'll get an even random distribution of colors throughout the chart:
 
-![null](/static/assets/firefox_2018-03-18_18-50-27.png)
+
+![null](/assets/firefox_2018-03-18_18-50-27.png)
+
 
 Looks good, but not very realistic. Is there really an equal distribution of "high commit" days and "low commit" days? Not really. To create a non-evenly distributed result set without getting nerdy with statistics, we can just "weight" the colors by adding more of them to the array of colors. Like this:
 
@@ -219,7 +229,9 @@ document.querySelectorAll('.block').forEach(block => {
 
 That looks a lot more realistic now! Here's the finished product:
 
-![](/static/assets/firefox_2018-03-18_18-55-52.png)
+
+![](/assets/firefox_2018-03-18_18-55-52.png)
+
 
 With just 22 lines of CSS (6 of which are extra styling), we have created a clean, simple representation of some interesting data. 
 
