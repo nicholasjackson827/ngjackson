@@ -10,7 +10,7 @@ tags:
 ---
 Most web developers today use Mac OS or Linux, but I'm part of the minority that use Windows for nearly all of my development. There are great resources out there for tools like [Oh My Zsh](https://github.com/robbyrussell/oh-my-zsh) or [fish shell](https://fishshell.com/), but there's not much about how to get similar functionality out of Windows. 
 
-This will be a quick post with a bit of background on configuring PowerShell and include my current profile option. 
+This will be a quick post with a bit of background on configuring PowerShell and include my current profile option. If you just want to see my `$PROFILE`, I've published it in [this gist](https://gist.github.com/nicholasjackson827/d049de3b4218f90c0b29bbb8fa124cf5).
 
 ## Configuring PowerShell
 
@@ -70,3 +70,17 @@ As a few notes for the `Write-Host` function, `-n` means don't add a new line an
 This gets us quite far, to a point where our prompt looks something like this:
 
 ![PowerShell prompt with style](/assets/conemu64_2018-03-27_21-41-14.png)
+
+Last but not least, let's add Git configuration. 
+
+## Adding Git Info
+
+Anywhere inside a project, it can be nice to know the status of where you are without having to type `git status` every 5 seconds. We can bake this into our prompt with a neat PowerShell module called [posh-git](https://github.com/dahlbyk/posh-git). Follow the installation guides on GitHub to get it installed. If you have PowerShell v5 or higher, it should be as simple as `Install-Module posh-git`. 
+
+There's tons of great documentation and sample configuration on [their wiki page](https://github.com/dahlbyk/posh-git/wiki/Customizing-Your-PowerShell-Prompt), but to boil it down, I use a simple `$(Write-VcsStatus)` after I print the directory to get the Git status. The documentation tells you exactly what each symbol means, but here's an example:
+
+![Pretty prompt with Git!](/assets/conemu64_2018-03-27_21-51-19.png)
+
+Just by looking at this prompt, I can tell that I'm on branch `master`, I'm not ahead or behind any commits compared to remote, I've added one file, edited 2 files, removed zero files, and there are unstaged changes in the project (meaning I haven't added them). The symbols aren't as cryptic as they seem and can actually provide more info than `git status` can!
+
+So that's how my prompt looks right now! I change it every so often and will try to update the gist as I update it locally. As always, let me know if you have any questions!
