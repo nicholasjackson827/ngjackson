@@ -59,52 +59,52 @@ Here's how I wrote it:
 
 ```java
 /**
-   * Go from number (like 12345) to alphanumeric ID (like a8e7z4)
-   *
-   * @param number The number you wish to convert to ID
-   * @return the alphanumeric ID as a string
-   */
+ * Go from number (like 12345) to alphanumeric ID (like a8e7z4)
+ *
+ * @param number The number you wish to convert to ID
+ * @return the alphanumeric ID as a string
+ */
 
-  public static String getIdFromNumber(Integer number) {
-    // The magic number we're trying to get down to 0
-    long magicNumber = number;
+public static String getIdFromNumber(Integer number) {
+  // The magic number we're trying to get down to 0
+  long magicNumber = number;
 
-    // Some placeholder values
-    long wholeNum = 0;
-    int remainder = 0;
-    String id = "";
+  // Some placeholder values
+  long wholeNum = 0;
+  int remainder = 0;
+  String id = "";
 
-    // The value we'll use as our modulo, just stored in a variable because it's simpler
-    int modVal = VALID_CHARACTERS.length();
+  // The value we'll use as our modulo, just stored in a variable because it's simpler
+  int modVal = VALID_CHARACTERS.length();
 
-    // Loop until the magic number (AKA the whole number) is not zero (>0 also works)
-    while (magicNumber != 0) {
+  // Loop until the magic number (AKA the whole number) is not zero (>0 also works)
+  while (magicNumber != 0) {
 
-      // First, take the magic number, divide it by the modulo value, and store that as our whole
-      // number
-      wholeNum = (long) Math.floor(magicNumber / modVal);
+    // First, take the magic number, divide it by the modulo value, and store that as our whole
+    // number
+    wholeNum = (long) Math.floor(magicNumber / modVal);
 
-      // Next, find the remainder of when we take the magic number and divide it by the modulo value
-      remainder = (int) magicNumber % modVal;
+    // Next, find the remainder of when we take the magic number and divide it by the modulo value
+    remainder = (int) magicNumber % modVal;
 
-      // Then, take the remainder that we just got, find what position it is in our valid
-      // characters, and store it in our ID (yes, this means the ID is backwards, but we fix that
-      // later)
-      id += VALID_CHARACTERS.charAt(remainder);
+    // Then, take the remainder that we just got, find what position it is in our valid
+    // characters, and store it in our ID (yes, this means the ID is backwards, but we fix that
+    // later)
+    id += VALID_CHARACTERS.charAt(remainder);
 
-      // Lastly, make the magic number the whole number from above (since we don't need to deal with
-      // the remainder)
-      magicNumber = wholeNum;
+    // Lastly, make the magic number the whole number from above (since we don't need to deal with
+    // the remainder)
+    magicNumber = wholeNum;
 
-      // Loop again until the whole num is zero!
-
-    }
-
-    // One last thing: reverse the string. StringBuilder has a nice reverse method, so that's what
-    // I'm using to reverse the string.
-    return new StringBuilder(id).reverse().toString();
+    // Loop again until the whole num is zero!
 
   }
+
+  // One last thing: reverse the string. StringBuilder has a nice reverse method, so that's what
+  // I'm using to reverse the string.
+  return new StringBuilder(id).reverse().toString();
+
+}
 ```
 
 The only slightly strange thing about this code is that there's no great way to reverse a string in Java, surprisingly, which is why I had to reach for the `StringBuilder` which does have a nice method. 
