@@ -119,4 +119,61 @@ Here's another table that shows an overview of the steps:
 
 ![](/assets/excel_2018-07-09_20-30-39.png)
 
-It's easier to read/understand if you start at the bottom and work your way up. Starting with the last character, `z`, we first get its index in the array of valid characters, which is 30. The index becomes our 
+It's easier to read/understand if you start at the bottom and work your way up. Starting with the last character, `z`, we first get its index in the array of valid characters, which is 30. The index becomes what we multiply the multiplier by (probably could have chosen better names for those). The multiplier is the result of our base (31) to the power of the "position" in our string. In this case, it's the first letter we've looked at, so it's at position zero. We get the product, and set it aside for the time being. 
+
+Next, we look at the character `f`. Its index in the array is 13. The multiplier for this character is the result of our base (31 still) to the power of the position, which is 1 (one more than last time). Work it all out, get the product, and move on to the next one!
+
+Once we've followed these steps for all of the characters, add up all of the products and we get our final number in base 10. 
+
+### Java Implementation
+
+Again, the complexity is in the logic, not the Java implementation. All of the heavy lifting is done in one line for this function. 
+
+Here's how I implemented it:
+
+```java
+/**
+ * Go from alphanumeric ID (like a8e7z4) to number (like 12345)
+ *
+ * @param id The string with the alphanumeric ID
+ * @return The number as an int
+ */
+
+public static Integer getNumberFromId(String id) {
+
+  // A placeholder for the base 10 number
+  Integer base10Number = 0;
+
+  // Loop over each character in the input string
+  for (int i = 0; i < id.length(); i++) {
+
+    // Get the "current" character
+    char c = id.charAt(i);
+
+    // Find where that character is in the list of valid characters
+    int index = VALID_CHARACTERS.indexOf(c);
+
+    // Check if the character was able to be found
+    if (index == -1) {
+      throw new IllegalArgumentException("Character \"" + c
+          + "\" is not a valid character. The only valid characters are: " + VALID_CHARACTERS);
+    }
+
+    // Take the base (31) to the power of the total number of characters, minus i, minus 1, and
+    // mutiply it by the index
+    base10Number += (int) Math.pow(VALID_CHARACTERS.length(), id.length() - i - 1) * index;
+
+  }
+
+  return base10Number;
+
+}
+```
+
+The only edge case we have to take care of is if someone passes in a character in the ID that's not in our array, a 1 or a 0 for example. In that case, I just throw an exception. 
+
+## Summary
+
+This was a fun, challenging algorithm to write. We take a number and turn it into a new alphanumeric ID based upon a list of valid characters. The best part is that because of how the algorithm is written, you can change up the `VALID_CHARACTERS` string (to add uppercase characters, for example) and not have to change any other code! 
+
+Let me know if you have any thoughts or feedback in the comments below!
