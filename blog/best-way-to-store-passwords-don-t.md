@@ -14,7 +14,7 @@ In this post, I'll first outline some alternatives, then explain 4 reasons why y
 
 ## Alternatives to Password Storage
 
-The end goal of password management is authentication. Authentication is simply answering the question "Is this person who they say they are?" (see [this StackOverflow answer](https://stackoverflow.com/a/6556548/3251199) for a good distinction between authentication and authorization). Passwords are a simple way to authenticate a user, but there are plenty of other ways, too. 
+The end goal of password management is authentication. Authentication is simply answering the question "Is this person who they say they are?" (not to be confused with authentication, see [this StackOverflow answer](https://stackoverflow.com/a/6556548/3251199) for a good distinction between authentication and authorization). Passwords are a simple way to authenticate a user, but there are plenty of other ways, too. 
 
 ### Option 1: OAuth
 
@@ -89,4 +89,26 @@ This is hard to beat when it comes to complex topic like web authentication. Thi
 
 ### Better User Experience
 
-The first three benefits have been all developer related, but for those who care about the end user experience too, you're in luck! 
+The first three benefits have been all developer related, but for those who care about the end user experience too, you're in luck! There's a whole host of benefits for the end user, too. 
+
+#### One Less Password
+
+For the vast majority of the population who doesn't use a password manager, it is a huge headache to remember different passwords for each application (that is, if they are following proper security best practices). By allowing the user to sign in to your application with their Google, Twitter, or Facebook password, that's one less password for the user to maintain. (And even if they do forget it, you don't have to handle the password reset flow!)
+
+#### SSO-like Functionality
+
+If you integrate with a provider that the user is most likely already logged into, there will be no need for the user to re-enter their credentials to log in to your application as the provider will just use their existing session. This will provide near-SSO functionality which is a beautiful thing. 
+
+If you are in an enterprise environment (or not) and choose to go with SAML, you can get true SSO functionality across all of the applications you maintain, and many that you don't. 
+
+#### Better Conversion Rates
+
+If your goal is to have users sign up for your product or create an account, any additional steps required by the end user hurt conversion rates. If your potential customer sees that they need to create an account to access your product, this will be a huge hurdle for them to overcome. Instead, if they are able to sign in with an account they already have, this can lead to 
+
+#### Increased Trust
+
+Security-conscious users will be weary of handing off their email address and password (especially if they only use one password) to an unknown source as they have no idea what you do with their password once they log in. They are far more likely to trust a known source with their data. 
+
+## Conclusion
+
+Authentication flows without passwords aren't without their flaws, but the pros far outweigh the cons. You should consider a password-less authentication flow for your next application. 
