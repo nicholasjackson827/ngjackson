@@ -46,7 +46,7 @@ export default function IndexPage({data}) {
   return (
     <div className="index">
 
-      <h1 className="snazzy-title">Some snazzy title about my website.</h1>
+      <h1 className="snazzy-title">A blog about software development and project management.</h1>
       <div className="post-overviews">
         <h1>Posts</h1>
         {posts.map((post, i) => (
